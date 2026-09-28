@@ -1,12 +1,20 @@
 import type { ReactNode } from "react";
 
+import { PublicFooter } from "@/components/public/public-footer";
 import { PublicHeader } from "@/components/public/public-header";
 
-export default function PublicLayout({ children }: { children: ReactNode }) {
+type PublicLayoutProps = {
+  children: ReactNode;
+};
+
+export default function PublicLayout({ children }: PublicLayoutProps) {
   return (
-    <div className="min-h-screen bg-white">
+    <div className="flex min-h-screen flex-col bg-white">
       <PublicHeader />
-      {children}
+
+      <div className="flex-1">{children}</div>
+
+      <PublicFooter />
     </div>
   );
 }
