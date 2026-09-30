@@ -8,6 +8,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+
 import { authService } from "@/services/auth.service";
 import {
   getAuthToken,
@@ -21,7 +22,7 @@ interface AuthContextValue {
   isLoading: boolean;
   isAuthenticated: boolean;
   isAdmin: boolean;
-  login: (payload: LoginPayload) => Promise<User>;
+  login: (payload: LoginPayload, remember?: boolean) => Promise<User>;
   register: (payload: RegisterPayload) => Promise<User>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
@@ -57,10 +58,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     void refreshUser();
   }, [refreshUser]);
 
-  async function login(payload: LoginPayload): Promise<User> {
-    const data = await authService.login(payload);
+  async function login(payload: LoginPayload, remember = true): Promise<User> {
+    const data = await authService.login(payload, remember);
 
-    saveAuthToken(data.token);
     setUser(data.user);
 
     return data.user;
