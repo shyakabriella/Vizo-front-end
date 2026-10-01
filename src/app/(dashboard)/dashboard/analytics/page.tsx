@@ -3,12 +3,17 @@
 import {
   Activity,
   BarChart3,
+  CalendarCheck2,
   Clock3,
   Eye,
   FileText,
   Globe2,
   LoaderCircle,
+  MapPin,
+  MessageCircle,
+  Phone,
   RefreshCw,
+  Scissors,
   Users,
 } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
@@ -374,7 +379,7 @@ export default function AnalyticsPage() {
         </section>
       )}
 
-      <section className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-6">
+      <section className="mt-6 grid min-w-0 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
         <StatCard
           label="Total events"
           value={analytics.summary.total_events}
@@ -397,6 +402,46 @@ export default function AnalyticsPage() {
           description="Tracked page-view events."
           icon={Eye}
           color="bg-cyan-50 text-cyan-600"
+        />
+
+        <StatCard
+          label="Service views"
+          value={analytics.summary.service_views}
+          description="Visits to individual service pages."
+          icon={Scissors}
+          color="bg-fuchsia-50 text-fuchsia-600"
+        />
+
+        <StatCard
+          label="Booking clicks"
+          value={analytics.summary.booking_clicks}
+          description="Visitors who opened the booking journey."
+          icon={CalendarCheck2}
+          color="bg-indigo-50 text-indigo-600"
+        />
+
+        <StatCard
+          label="Phone clicks"
+          value={analytics.summary.phone_clicks}
+          description="Visitors who tapped a telephone link."
+          icon={Phone}
+          color="bg-sky-50 text-sky-600"
+        />
+
+        <StatCard
+          label="WhatsApp clicks"
+          value={analytics.summary.whatsapp_clicks}
+          description="Visitors who started a WhatsApp conversation."
+          icon={MessageCircle}
+          color="bg-green-50 text-green-600"
+        />
+
+        <StatCard
+          label="Direction requests"
+          value={analytics.summary.directions_clicks}
+          description="Visitors who requested directions."
+          icon={MapPin}
+          color="bg-orange-50 text-orange-600"
         />
 
         <StatCard

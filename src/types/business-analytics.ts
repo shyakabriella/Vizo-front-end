@@ -8,6 +8,11 @@ export interface BusinessAnalyticsSummary {
   total_events: number;
   script_loads: number;
   page_views: number;
+  service_views: number;
+  booking_clicks: number;
+  phone_clicks: number;
+  whatsapp_clicks: number;
+  directions_clicks: number;
   unique_sessions: number;
   unique_pages: number;
   events_today: number;
